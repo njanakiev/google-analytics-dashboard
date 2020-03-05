@@ -9,7 +9,7 @@ RUN pip install --upgrade pip \
 
 COPY . /app
 
-ENV VIEW_ID $VIEW_ID
+# ENV VIEW_ID $VIEW_ID
 ENV KEY_FILE_LOCATION "client_secrets.json"
 
 EXPOSE 8050
