@@ -13,4 +13,5 @@ fi
 sudo docker run -it \
   -p 8050:8050 \
   -e VIEW_ID=$VIEW_ID \
+  -v $KEY_FILE_LOCATION:/app/client_secrets.json \
   google-analytics-dashboard
