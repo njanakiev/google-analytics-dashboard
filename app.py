@@ -17,13 +17,12 @@ app = dash.Dash(__name__, server=server)
 #                requests_pathname_prefix='/dashboard/')
 
 
-KEY_FILE_LOCATION = os.environ['KEY_FILE_LOCATION']
 VIEW_ID = os.environ['VIEW_ID']
 SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
 
 
 def load_data():
-    df = utils.ga_dataframe(KEY_FILE_LOCATION, SCOPES, body={
+    df = utils.ga_dataframe("client_secrets.json", SCOPES, body={
     'reportRequests': [{
         'viewId': VIEW_ID,
         'dateRanges': [{'startDate': '2017-01-01', 'endDate': 'yesterday'}],

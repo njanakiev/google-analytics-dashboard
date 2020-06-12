@@ -7,11 +7,11 @@ WORKDIR /app
 RUN pip install --upgrade pip \
  && pip install --no-cache-dir -r requirements.txt 
 
-COPY . /app
+ARG VIEW_ID
 
-# ENV VIEW_ID $VIEW_ID
-ENV KEY_FILE_LOCATION "client_secrets.json"
+COPY utils /app/utils
+COPY app.py /app
 
 EXPOSE 8050
 
-CMD ["python", "app.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:8050", "app:server"]

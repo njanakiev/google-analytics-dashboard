@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  google-analytics-dashboard:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - VIEW_ID
+    volumes: 
+      - ./client_secrets.json:/app/client_secrets.json
+    expose:
+      - 8050
